@@ -229,16 +229,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - arXiv for dataset
 - IEEE for publication support
 
-##  Screenshots
-
-### Main Interface
-![Main Interface](screenshots/main_interface.png)
-
-### Summary Results
-![Summary Results](screenshots/results.png)
-
-### Performance Metrics
-![Performance Metrics](evaluation/figures/fig_rouge_comparison.png)
 
 ---
 
