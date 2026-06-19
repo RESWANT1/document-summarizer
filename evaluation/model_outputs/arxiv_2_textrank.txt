@@ -1,0 +1,1 @@
+Traditional extractive methods fail to capture cross-document relationships.

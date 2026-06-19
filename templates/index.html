@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DocSummarizer</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <header>
+    <div class="logo">
+      <span class="logo-mark">∑</span>
+      <span class="logo-text">DocSummarizer</span>
+      
+    </div>
+    
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      
+      <h1>Multi-Format Document Summarization <br/><em></em></h1>
+      <p class="hero-sub">Multi-format input support (PDF, DOCX, PPTX, Images)<br/></p>
+    </section>
+
+    <!-- Upload Card -->
+    <section class="card upload-card" id="upload">
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept=".pdf,.docx,.pptx,.png,.jpg,.jpeg" hidden />
+        <div class="drop-icon">↑</div>
+        <p class="drop-main">Drag & drop your file here</p>
+        <p class="drop-sub">PDF · DOCX · PPTX · PNG · JPG</p>
+        <button class="btn-outline" onclick="event.stopPropagation(); document.getElementById('fileInput').click()">Browse file</button>
+      </div>
+
+      <div class="divider"><span>or</span></div>
+
+      <textarea id="rawText" placeholder="Paste your text here…" rows="6" maxlength="10000" oninput="updateCharCount()"></textarea>
+      <div id="charCount" class="result-meta" style="text-align: right; margin-top: 0.3rem;">0 / 10000 characters</div>
+
+      <textarea id="referenceSummary" placeholder="Optional: Paste reference summary for evaluation metrics (ROUGE-1/2/L, BERTScore-F1)." rows="4" maxlength="10000"></textarea>
+
+      <button class="btn-primary" id="summarizeBtn" onclick="submitSummary()">
+        <span id="btnText">Generate Summary</span>
+        <span id="btnLoader" class="hidden">
+          <span class="spinner"></span> Processing…
+        </span>
+      </button>
+    </section>
+
+    <!-- Result -->
+    <section class="card result-card hidden" id="resultCard">
+      <div class="result-header">
+        <h2>📄 Generated Summary</h2>
+        <span class="result-meta" id="statTokens">-</span>
+      </div>
+      <div class="summary-text" id="summaryOutput"></div>
+
+      <!-- IEEE Metrics Section -->
+      <div id="metrics" style="margin-top: 2rem;">
+        <h3 style="font-family: var(--font-head); font-size: 1.1rem; margin-bottom: 1rem; color: var(--accent);">Metrics</h3>
+        
+        <!-- Core Metrics -->
+        <div class="dashboard-stats" style="margin-bottom: 1rem; padding: 1rem; background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; font-size: 0.85rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem;">
+          <div><strong>Factuality (SummaC):</strong> <span id="statFactuality" style="font-weight: 600;">-</span></div>
+          <div><strong>Novel N-grams:</strong> <span id="statNovelty" style="font-weight: 600;">-</span></div>
+          <div><strong>Compression Ratio:</strong> <span id="statCompression" style="font-weight: 600;">-</span></div>
+          <div><strong>⏱Processing Time:</strong> <span id="statTime" style="font-weight: 600;">-</span></div>
+        </div>
+
+        <!-- Pipeline Stats -->
+        <div class="dashboard-stats" style="padding: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem;">
+          <div><strong>Original Words:</strong> <span id="statOrigWords">-</span></div>
+          <div><strong>Summary Words:</strong> <span id="statSummWords">-</span></div>
+          <div><strong>Total Sentences:</strong> <span id="statTotalSents">-</span></div>
+          <div><strong>Selected Sentences:</strong> <span id="statSelSents">-</span></div>
+          <div><strong>Chunk Count:</strong> <span id="statChunkCount">-</span></div>
+          <div><strong>Avg Chunk Tokens:</strong> <span id="statAvgTokens">-</span></div>
+          <div><strong>Summary Mode:</strong> <span id="statMode">-</span></div>
+          <div><strong>Model Used:</strong> <span id="statModel">-</span></div>
+        </div>
+
+        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem; padding: 0.75rem; background: rgba(0,0,0,0.2); border-radius: 6px;">
+          <strong>🔬 Pipeline Path:</strong> <span id="statPath">-</span>
+        </div>
+      </div>
+      
+      <!-- Evaluation Metrics (ROUGE/BERTScore) -->
+      <div style="margin-top: 1.5rem;">
+        <h3 style="font-family: var(--font-head); font-size: 1.1rem; margin-bottom: 1rem; color: var(--accent2);">📈 Evaluation Metrics (vs Reference)</h3>
+        
+        <div id="evalMessage" style="font-size: 0.85rem; font-style: italic; color: var(--text-muted); text-align: center; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 6px;">
+          ℹ️ Provide a reference summary above to see ROUGE & BERTScore metrics
+        </div>
+
+        <div class="dashboard-stats" id="evalStats" style="padding: 1rem; background: rgba(129, 140, 248, 0.05); border: 1px solid rgba(129, 140, 248, 0.2); border-radius: 8px; font-size: 0.85rem; display: none; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem;">
+          <div><strong>ROUGE-1:</strong> <span id="metricRouge1" style="font-weight: 600;">-</span></div>
+          <div><strong>ROUGE-2:</strong> <span id="metricRouge2" style="font-weight: 600;">-</span></div>
+          <div><strong>ROUGE-L:</strong> <span id="metricRougeL" style="font-weight: 600;">-</span></div>
+          <div><strong>BERTScore-F1:</strong> <span id="metricBertF1" style="font-weight: 600;">-</span></div>
+        </div>
+      </div>
+
+      <details class="extractive-details">
+        <summary>🔍 View Extractive Context (Top-Ranked Sentences)</summary>
+        <div id="extractiveText" class="summary-text" style="margin-top: 1rem; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 8px; font-size: 0.9rem; line-height: 1.6;"></div>
+      </details>
+
+      <div class="result-actions">
+        <button class="btn-copy" onclick="copySummary()">📋 Copy Summary</button>
+        <button class="btn-outline" onclick="resetForm()" style="margin-top: 1.25rem; margin-left: 0.5rem;">🔄 Summarize Another</button>
+      </div>
+    </section>
+
+    
+
+    <!-- Error toast -->
+    <div class="toast hidden" id="toast"></div>
+  </main>
+
+
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

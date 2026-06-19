@@ -1,0 +1,71 @@
+c:\Users\reswant\minor\venv\Lib\site-packages\transformers\utils\generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+c:\Users\reswant\minor\venv\Lib\site-packages\transformers\utils\generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+INFO:summarizer.textrank_service:TextRank service initialized
+INFO:summarizer.textrank_service:TextRank: 7 sentences \u2192 1 selected (14.3% compression)
+INFO:summarizer.textrank_service:TextRank: 7 sentences \u2192 1 selected (14.3% compression)
+INFO:summarizer.textrank_service:TextRank: 7 sentences \u2192 1 selected (14.3% compression)
+INFO:summarizer.textrank_service:TextRank: 7 sentences \u2192 1 selected (14.3% compression)
+INFO:summarizer.textrank_service:TextRank: 8 sentences \u2192 2 selected (25.0% compression)
+INFO:summarizer.summarizer_service:Loading summarization model: facebook/bart-large-cnn …
+INFO:summarizer.summarizer_service:Summarization model ready. (Device: GPU)
+INFO:summarizer.summarizer_service:Input token size is within limits. Passing intact.
+INFO:summarizer.summarizer_service:BART gen params — min_length: 100  max_length: 149  chunk_tokens: 109
+Your max_length is set to 149, but your input_length is only 111. Since this is a summarization task, where outputs shorter than the input are typically wanted, you might consider decreasing max_length manually, e.g. summarizer('...', max_length=55)
+INFO:summarizer.summarizer_service:Chunk 1/1 generated: 516 chars.
+INFO:summarizer.summarizer_service:Final abstractive summary: 516 chars / 80 words.
+INFO:summarizer.summarizer_service:Input token size is within limits. Passing intact.
+INFO:summarizer.summarizer_service:BART gen params — min_length: 100  max_length: 137  chunk_tokens: 97
+Your max_length is set to 137, but your input_length is only 99. Since this is a summarization task, where outputs shorter than the input are typically wanted, you might consider decreasing max_length manually, e.g. summarizer('...', max_length=49)
+INFO:summarizer.summarizer_service:Chunk 1/1 generated: 602 chars.
+INFO:summarizer.summarizer_service:Final abstractive summary: 602 chars / 78 words.
+INFO:summarizer.summarizer_service:Input token size is within limits. Passing intact.
+INFO:summarizer.summarizer_service:BART gen params — min_length: 100  max_length: 136  chunk_tokens: 96
+Your max_length is set to 136, but your input_length is only 98. Since this is a summarization task, where outputs shorter than the input are typically wanted, you might consider decreasing max_length manually, e.g. summarizer('...', max_length=49)
+INFO:summarizer.summarizer_service:Chunk 1/1 generated: 613 chars.
+INFO:summarizer.summarizer_service:Final abstractive summary: 613 chars / 89 words.
+INFO:summarizer.summarizer_service:Input token size is within limits. Passing intact.
+INFO:summarizer.summarizer_service:BART gen params — min_length: 100  max_length: 155  chunk_tokens: 115
+Your max_length is set to 155, but your input_length is only 117. Since this is a summarization task, where outputs shorter than the input are typically wanted, you might consider decreasing max_length manually, e.g. summarizer('...', max_length=58)
+INFO:summarizer.summarizer_service:Chunk 1/1 generated: 493 chars.
+INFO:summarizer.summarizer_service:Final abstractive summary: 493 chars / 66 words.
+INFO:summarizer.summarizer_service:Input token size is within limits. Passing intact.
+INFO:summarizer.summarizer_service:BART gen params — min_length: 100  max_length: 147  chunk_tokens: 107
+Your max_length is set to 147, but your input_length is only 108. Since this is a summarization task, where outputs shorter than the input are typically wanted, you might consider decreasing max_length manually, e.g. summarizer('...', max_length=54)
+INFO:summarizer.summarizer_service:Chunk 1/1 generated: 608 chars.
+INFO:summarizer.summarizer_service:Final abstractive summary: 608 chars / 75 words.
+INFO:summarizer.hla_mmr_service:Loading BART model for HLA-MMR...
+INFO:summarizer.hla_mmr_service:HLA-MMR service initialized (Device: GPU)
+INFO:summarizer.hla_mmr_service:HLA-MMR extraction: 7 sentences \u2192 3 selected (42.9%)
+Your max_length is set to 280, but your input_length is only 55. Since this is a summarization task, where outputs shorter than the input are typically wanted, you might consider decreasing max_length manually, e.g. summarizer('...', max_length=27)
+INFO:summarizer.hla_mmr_service:HLA-MMR abstractive refinement: 54 words
+INFO:summarizer.hla_mmr_service:HLA-MMR extraction: 7 sentences \u2192 3 selected (42.9%)
+Your max_length is set to 280, but your input_length is only 45. Since this is a summarization task, where outputs shorter than the input are typically wanted, you might consider decreasing max_length manually, e.g. summarizer('...', max_length=22)
+INFO:summarizer.hla_mmr_service:HLA-MMR abstractive refinement: 87 words
+INFO:summarizer.hla_mmr_service:HLA-MMR extraction: 7 sentences \u2192 3 selected (42.9%)
+Your max_length is set to 280, but your input_length is only 49. Since this is a summarization task, where outputs shorter than the input are typically wanted, you might consider decreasing max_length manually, e.g. summarizer('...', max_length=24)
+INFO:summarizer.hla_mmr_service:HLA-MMR abstractive refinement: 63 words
+INFO:summarizer.hla_mmr_service:HLA-MMR extraction: 7 sentences \u2192 3 selected (42.9%)
+Your max_length is set to 280, but your input_length is only 49. Since this is a summarization task, where outputs shorter than the input are typically wanted, you might consider decreasing max_length manually, e.g. summarizer('...', max_length=24)
+INFO:summarizer.hla_mmr_service:HLA-MMR abstractive refinement: 50 words
+INFO:summarizer.hla_mmr_service:HLA-MMR extraction: 8 sentences \u2192 4 selected (50.0%)
+Your max_length is set to 280, but your input_length is only 59. Since this is a summarization task, where outputs shorter than the input are typically wanted, you might consider decreasing max_length manually, e.g. summarizer('...', max_length=29)
+INFO:summarizer.hla_mmr_service:HLA-MMR abstractive refinement: 74 words
+INFO:absl:Using default tokenizer.
+
+[Running Models on arXiv...]
+TextRank...
+BART...
+HLA-MMR...
+
+[Computing Metrics...]
+Computing metrics:   0%|          | 0/5 [00:00<?, ?it/s]Computing metrics:  20%|##        | 1/5 [00:03<00:12,  3.03s/it]Computing metrics:  40%|####      | 2/5 [00:03<00:04,  1.62s/it]Computing metrics:  60%|######    | 3/5 [00:04<00:02,  1.20s/it]Computing metrics:  80%|########  | 4/5 [00:05<00:01,  1.01s/it]Computing metrics: 100%|##########| 5/5 [00:06<00:00,  1.02it/s]Computing metrics: 100%|##########| 5/5 [00:06<00:00,  1.20s/it]
+
+Results:
+   Model  ROUGE-1  ROUGE-2  ROUGE-L  SummaC
+TEXTRANK   0.2697   0.1462   0.2471  0.5072
+    BART   0.4578   0.2399   0.3220  0.4797
+ HLA_MMR   0.3097   0.1155   0.2396  0.2729
+
+Results saved to evaluation/results/table_arxiv.tex

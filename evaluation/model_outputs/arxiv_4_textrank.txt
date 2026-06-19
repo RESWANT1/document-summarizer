@@ -1,0 +1,1 @@
+We propose a consistency-aware training objective that penalizes factually inconsistent summaries. We introduce SummaC, a metric for evaluating factual consistency.

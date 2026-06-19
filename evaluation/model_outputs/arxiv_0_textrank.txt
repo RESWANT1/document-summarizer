@@ -1,0 +1,1 @@
+This paper surveys recent advances in deep learning for NLP, including recurrent neural networks, transformers, and attention mechanisms.

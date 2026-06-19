@@ -1,0 +1,32 @@
+[
+  {
+    "id": "arxiv_0",
+    "title": "Deep Learning for Natural Language Processing",
+    "intro_conclusion": "Natural language processing has undergone a revolution with the advent of deep learning techniques. Traditional NLP methods relied on hand-crafted features and linguistic knowledge. However, neural networks have demonstrated superior performance across various NLP tasks. This paper surveys recent advances in deep learning for NLP, including recurrent neural networks, transformers, and attention mechanisms. We discuss applications in machine translation, sentiment analysis, and question answering. Our findings show that transformer-based models consistently outperform previous approaches. Future work should focus on improving efficiency and interpretability of these models.",
+    "reference_abstract": "Deep learning has revolutionized NLP. We survey neural network approaches including RNNs, transformers, and attention mechanisms. Transformer models achieve state-of-the-art results on multiple benchmarks. Key challenges remain in model efficiency and interpretability."
+  },
+  {
+    "id": "arxiv_1",
+    "title": "Efficient Attention Mechanisms for Transformers",
+    "intro_conclusion": "Transformer models have become the dominant architecture in modern NLP and computer vision. However, their quadratic complexity in sequence length limits applicability to long documents. This work proposes efficient attention mechanisms that reduce computational complexity. We introduce sparse attention patterns and hierarchical attention structures. Experimental results on long document summarization show 50% speedup with minimal accuracy loss. The proposed methods enable processing of sequences up to 16K tokens. Future research should explore adaptive attention patterns and hardware-specific optimizations.",
+    "reference_abstract": "Transformers suffer from quadratic complexity in sequence length. We propose efficient attention mechanisms with linear complexity. Experiments show 50% speedup on long document tasks. Our methods enable processing of 16K token sequences."
+  },
+  {
+    "id": "arxiv_2",
+    "title": "Multi-Document Summarization using Graph Neural Networks",
+    "intro_conclusion": "Multi-document summarization is a challenging task requiring integration of information from multiple sources. Traditional extractive methods fail to capture cross-document relationships. We propose a graph neural network approach that models documents as nodes and semantic relationships as edges. The GNN learns to identify salient information across documents. Experiments on DUC and TAC datasets show improvements over baseline methods. Our approach achieves 45% improvement in ROUGE scores. Future work includes incorporating temporal information and handling document redundancy.",
+    "reference_abstract": "Multi-document summarization requires integrating information across sources. We propose a GNN-based approach modeling documents as graph nodes. Our method achieves 45% ROUGE improvement over baselines. The approach effectively captures cross-document relationships."
+  },
+  {
+    "id": "arxiv_3",
+    "title": "Abstractive Summarization with Pre-trained Language Models",
+    "intro_conclusion": "Pre-trained language models like BERT and GPT have shown remarkable performance on downstream NLP tasks. However, their application to abstractive summarization remains challenging. This paper investigates fine-tuning strategies for abstractive summarization. We compare BART, T5, and GPT-2 on CNN/DailyMail and arXiv datasets. Results show BART achieves best performance with 42.5 ROUGE-1 score. We identify key factors affecting summarization quality including model size and training data. Future directions include multi-lingual summarization and domain adaptation.",
+    "reference_abstract": "Pre-trained models enable strong abstractive summarization. We compare BART, T5, and GPT-2 on benchmark datasets. BART achieves 42.5 ROUGE-1 on CNN/DailyMail. Key factors include model size and training data quality."
+  },
+  {
+    "id": "arxiv_4",
+    "title": "Factual Consistency in Neural Abstractive Summarization",
+    "intro_conclusion": "Neural abstractive summarization models often generate summaries containing factual errors not present in source documents. This phenomenon, known as hallucination, limits practical deployment. We analyze causes of hallucination in transformer-based summarizers. We propose a consistency-aware training objective that penalizes factually inconsistent summaries. Experiments show 35% reduction in hallucination rate. We introduce SummaC, a metric for evaluating factual consistency. The metric correlates well with human judgments. Future work should focus on real-time consistency checking during generation.",
+    "reference_abstract": "Neural summarizers often hallucinate facts not in source documents. We propose consistency-aware training to reduce hallucination by 35%. We introduce SummaC metric for evaluating factual consistency. The metric correlates well with human judgments."
+  }
+]
